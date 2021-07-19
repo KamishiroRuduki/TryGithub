@@ -119,7 +119,7 @@ namespace HW_W3
             {
                 result = tax;
                 result_Text.Text = tax.ToString();
-                result_Text.Text = "汽缸CC數: "+cctext + Environment.NewLine+ "用途: " +typetext + Environment.NewLine + $"應納稅額: 共 {tax.ToString("#,0")} 元" + Environment.NewLine +$"應納稅額: 共 {result} 元";
+                result_Text.Text = "汽缸CC數: "+cctext + Environment.NewLine+ "用途: " +typetext + Environment.NewLine + $"應納稅額: 共 {tax.ToString("#,0")} 元" + Environment.NewLine ;
             }
             else if(term_rbtn.Checked)//依期間
             {
