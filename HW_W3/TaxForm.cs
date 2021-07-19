@@ -121,18 +121,23 @@ namespace HW_W3
 
         private void Amount_TextChanged(object sender, EventArgs e)
         {
-            decimal amount;
-            if (decimal.TryParse(Amount.Text, out amount)) {
-                //Amount.Text = $"{amount.ToString("#,0")}";
-             //   NumberFormatInfo nfi = new CultureInfo("en-US", false).NumberFormat;
-                Amount.Text = $"{amount.ToString("N1", CultureInfo.InvariantCulture)}";
-        }
 
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void Amount_Leave(object sender, EventArgs e)
+        {
+            decimal amount;
+            string sText = this.Amount.Text.Replace(",", "");
+            if (decimal.TryParse(Amount.Text, out amount))
+            {
+                amount = Convert.ToDecimal(this.Amount.Text);
+                this.Amount.Text = amount.ToString("###,###,###");
+            }
         }
     }
 }

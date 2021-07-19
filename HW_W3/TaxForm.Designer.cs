@@ -90,10 +90,10 @@ namespace HW_W3
             // amountMsg
             // 
             this.amountMsg.AutoSize = true;
-            this.amountMsg.Font = new System.Drawing.Font("PMingLiU", 12F, System.Drawing.FontStyle.Bold);
+            this.amountMsg.Font = new System.Drawing.Font("PMingLiU", 7.8F);
             this.amountMsg.Location = new System.Drawing.Point(657, 47);
             this.amountMsg.Name = "amountMsg";
-            this.amountMsg.Size = new System.Drawing.Size(16, 20);
+            this.amountMsg.Size = new System.Drawing.Size(11, 14);
             this.amountMsg.TabIndex = 9;
             this.amountMsg.Text = "-";
             this.amountMsg.Visible = false;
@@ -161,6 +161,7 @@ namespace HW_W3
             this.Amount.TabIndex = 3;
             this.Amount.Text = "0";
             this.Amount.TextChanged += new System.EventHandler(this.Amount_TextChanged);
+            this.Amount.Leave += new System.EventHandler(this.Amount_Leave);
             // 
             // label3
             // 
