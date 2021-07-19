@@ -126,15 +126,8 @@ namespace HW_W3
 
             return cDate;
         }
-        /// <summary>
-        /// 稅額計算並回傳
-        /// </summary>
-        /// <param name="sDate"></param>
-        /// <param name="eDate"></param>
-        /// <param name="i"></param>
-        /// <param name="result"></param>
-        /// <returns></returns>
-        public decimal TermResult(DateTime sDate, DateTime eDate, int i, decimal result)
+
+     /*   public decimal TermResult(DateTime sDate, DateTime eDate, int i, decimal result)
         {
 
             int days = Days( sDate,  eDate,  i);
@@ -144,7 +137,7 @@ namespace HW_W3
              else
                  return result * days / 365;
 
-        }
+        }*/
         /// <summary>
         /// 不滿一年時判斷日數
         /// </summary>
@@ -179,6 +172,50 @@ namespace HW_W3
                 days = 1;
             }
             return days;
+        }
+        /// <summary>
+        /// 稅額計算並將計算結果放進字串並回傳
+        /// </summary>
+        /// <param name="sDate"></param>
+        /// <param name="eDate"></param>
+        /// <param name="i"></param>
+        /// <param name="tax"></param>
+        /// <returns></returns>
+        public string TermResult2(DateTime sDate, DateTime eDate, int i, decimal tax)
+        {
+            decimal rtax = 0 ;
+            string str = "";
+            int days = Days(sDate, eDate, i);
+            int days2 = 0;
+            if (DateTime.IsLeapYear(i))//閏年判斷
+            { 
+                days2 = 366;
+                rtax = tax * days / 366;
+            }
+            else
+            { 
+                days2 = 365;
+                rtax = tax * days / 365;
+            }
+
+            DateTime minDate = GetDate(sDate, eDate, i, 1); DateTime maxDate = GetDate(sDate, eDate, i, 12);
+            this.result += rtax;
+            str =  "使用期間:" + minDate.ToString("yyyy-MM-dd") + " ~ " + maxDate.ToString("yyyy-MM-dd") + Environment.NewLine + $"計算天數: {days}天" + Environment.NewLine + "汽缸CC數: " + this.Cctext + Environment.NewLine + "用途: " + this.Typetext + Environment.NewLine + $"計算公式:{tax}*{days}/{days2} = {((int)rtax).ToString("#,0")} 元" + Environment.NewLine + $"應納稅額: 共 {((int)rtax).ToString("#,0")} 元" + Environment.NewLine + Environment.NewLine;
+
+
+            return str;
+
+        }
+        public string Cctext { get; set; }
+        public string Typetext { get; set; }
+        public decimal result { get; set; }
+
+        public void SetText(string cctext, string typetext )
+        {
+            this.Cctext = cctext;
+            this.Typetext = typetext;
+            this.result = 0;
+
         }
 
 

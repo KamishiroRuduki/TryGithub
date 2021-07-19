@@ -68,9 +68,10 @@ namespace HW_W3
             // resultMsg
             // 
             this.resultMsg.AutoSize = true;
+            this.resultMsg.Font = new System.Drawing.Font("PMingLiU", 12F, System.Drawing.FontStyle.Bold);
             this.resultMsg.Location = new System.Drawing.Point(660, 156);
             this.resultMsg.Name = "resultMsg";
-            this.resultMsg.Size = new System.Drawing.Size(82, 15);
+            this.resultMsg.Size = new System.Drawing.Size(114, 20);
             this.resultMsg.TabIndex = 11;
             this.resultMsg.Text = "應繳印花稅";
             this.resultMsg.Visible = false;
@@ -78,9 +79,10 @@ namespace HW_W3
             // TaxTypeMsg
             // 
             this.TaxTypeMsg.AutoSize = true;
+            this.TaxTypeMsg.Font = new System.Drawing.Font("PMingLiU", 12F, System.Drawing.FontStyle.Bold);
             this.TaxTypeMsg.Location = new System.Drawing.Point(660, 99);
             this.TaxTypeMsg.Name = "TaxTypeMsg";
-            this.TaxTypeMsg.Size = new System.Drawing.Size(82, 15);
+            this.TaxTypeMsg.Size = new System.Drawing.Size(114, 20);
             this.TaxTypeMsg.TabIndex = 10;
             this.TaxTypeMsg.Text = "印花稅種類";
             this.TaxTypeMsg.Visible = false;
@@ -88,9 +90,10 @@ namespace HW_W3
             // amountMsg
             // 
             this.amountMsg.AutoSize = true;
+            this.amountMsg.Font = new System.Drawing.Font("PMingLiU", 12F, System.Drawing.FontStyle.Bold);
             this.amountMsg.Location = new System.Drawing.Point(657, 47);
             this.amountMsg.Name = "amountMsg";
-            this.amountMsg.Size = new System.Drawing.Size(12, 15);
+            this.amountMsg.Size = new System.Drawing.Size(16, 20);
             this.amountMsg.TabIndex = 9;
             this.amountMsg.Text = "-";
             this.amountMsg.Visible = false;
@@ -106,6 +109,7 @@ namespace HW_W3
             // 
             // reset
             // 
+            this.reset.Font = new System.Drawing.Font("PMingLiU", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.reset.Location = new System.Drawing.Point(457, 282);
             this.reset.Name = "reset";
             this.reset.Size = new System.Drawing.Size(109, 34);
@@ -116,6 +120,7 @@ namespace HW_W3
             // 
             // Calculate
             // 
+            this.Calculate.Font = new System.Drawing.Font("PMingLiU", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.Calculate.Location = new System.Drawing.Point(330, 282);
             this.Calculate.Name = "Calculate";
             this.Calculate.Size = new System.Drawing.Size(98, 34);
@@ -127,9 +132,10 @@ namespace HW_W3
             // lblresult
             // 
             this.lblresult.AutoSize = true;
+            this.lblresult.Font = new System.Drawing.Font("PMingLiU", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.lblresult.Location = new System.Drawing.Point(327, 156);
             this.lblresult.Name = "lblresult";
-            this.lblresult.Size = new System.Drawing.Size(29, 15);
+            this.lblresult.Size = new System.Drawing.Size(38, 20);
             this.lblresult.TabIndex = 5;
             this.lblresult.Text = "0元";
             this.lblresult.Click += new System.EventHandler(this.lblresult_Click);
@@ -159,7 +165,7 @@ namespace HW_W3
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("新細明體", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label3.Font = new System.Drawing.Font("PMingLiU", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.label3.Location = new System.Drawing.Point(100, 150);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(135, 24);
@@ -170,7 +176,7 @@ namespace HW_W3
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("新細明體", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label2.Font = new System.Drawing.Font("PMingLiU", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.label2.Location = new System.Drawing.Point(100, 91);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(135, 24);
@@ -181,7 +187,7 @@ namespace HW_W3
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("新細明體", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label1.Font = new System.Drawing.Font("PMingLiU", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.label1.Location = new System.Drawing.Point(3, 39);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(235, 24);

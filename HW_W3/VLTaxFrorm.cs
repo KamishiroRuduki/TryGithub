@@ -19,8 +19,9 @@ namespace HW_W3
         }
 
         private void VLTaxFrorm_Load(object sender, EventArgs e)
-        {           
-            Common.Car();
+        {   
+            if(Common.autobike_Tax.Count == 0)        
+              Common.Car();
             this.Init();
         }
         /// <summary>
@@ -29,9 +30,6 @@ namespace HW_W3
         private void Init()
         {
             this.Car_combo.SelectedIndex = 0;
-            this.CC_Combo.DataSource = Common.autobike_Tax;
-            this.CC_Combo.DisplayMember = "Cc";
-            this.CC_Combo.ValueMember = "Type";
             this.CC_Combo.SelectedIndex = 0;
             this.result_Text.Text = null;
             this.dateTimePicker1.Value = new DateTime(DateTime.Now.Year, 1, 1);
@@ -75,7 +73,7 @@ namespace HW_W3
                     this.CC_Combo.DisplayMember = "Cc";
                     this.CC_Combo.ValueMember = "Type";
                 }
-
+                
             }
         }
 
@@ -112,22 +110,27 @@ namespace HW_W3
             this.result_Text.Text = null;
             Calculate calculate = new Calculate();
             int tax = calculate.GetIntTax(Car_combo.SelectedIndex, CC_Combo.SelectedIndex);
-            decimal result = 0;
             string cctext = calculate.GetStrType(Car_combo.SelectedIndex, CC_Combo.SelectedIndex);
             string typetext = calculate.GetStrCc(Car_combo.SelectedIndex, CC_Combo.SelectedIndex);
             if (All_rbtn.Checked) //全年度
             {
-                result = tax;
+                DateTime startYear = new DateTime(DateTime.Now.Year, 1, 1);
+                DateTime endYear = new DateTime(DateTime.Now.Year, 12, 31);
+                int days = DateTime.Now.Year;
+                if (DateTime.IsLeapYear(days))//閏年判斷
+                    days = 366;
+                else
+                    days = 365;
+
                 result_Text.Text = tax.ToString();
-                result_Text.Text = "汽缸CC數: "+cctext + Environment.NewLine+ "用途: " +typetext + Environment.NewLine + $"應納稅額: 共 {tax.ToString("#,0")} 元" + Environment.NewLine ;
+                result_Text.Text = "使用期間:" + startYear.ToString("yyyy-MM-dd") + " ~ " + endYear.ToString("yyyy-MM-dd") + Environment.NewLine + $"計算天數: {days}天" + Environment.NewLine + "汽缸CC數: " +cctext + Environment.NewLine+ "用途: " +typetext + Environment.NewLine + $"計算公式:{tax}*{days}/{days} = {tax.ToString("#,0")} 元" + Environment.NewLine + $"應納稅額: 共 {tax.ToString("#,0")} 元" + Environment.NewLine ;
             }
             else if(term_rbtn.Checked)//依期間
             {
                 DateTime sDate = Convert.ToDateTime(dateTimePicker1.Value.ToString());
                 DateTime eDate = Convert.ToDateTime(dateTimePicker2.Value.ToString());
-                decimal rtax = 0;
-
-                if(sDate > eDate) //處理日曆1的日期在日曆2的日期之後的狀況
+                calculate.SetText(cctext, typetext);
+                if (sDate > eDate) //處理日曆1的日期在日曆2的日期之後的狀況
                 {
                     DateTime cDate = sDate;
                     sDate = eDate;
@@ -137,22 +140,18 @@ namespace HW_W3
                 for ( int i = sDate.Year; i <= eDate.Year; i++)
                 {
 
-                    int days = calculate.Days(sDate, eDate, i); ;
-                    int days2 = 0;
-                    if (DateTime.IsLeapYear(i))//閏年判斷
-                        days2 = 366;
-                    else
-                        days2 = 365;
-                    rtax = (decimal)calculate.TermResult(sDate, eDate, i,tax);
-                    DateTime minDate = calculate.GetDate(sDate, eDate, i, 1); DateTime maxDate = calculate.GetDate(sDate, eDate, i, 12);
-                    result += rtax;
-                    result_Text.Text += "使用期間:"+ minDate.ToString("yyyy-MM-dd") + " ~ " + maxDate.ToString("yyyy-MM-dd") + Environment.NewLine + $"計算天數: {days}天" + Environment.NewLine + "汽缸CC數: " + cctext + Environment.NewLine + "用途: " + typetext + Environment.NewLine + $"計算公式:{tax}*{days}/{days2} = {((int)rtax).ToString("#,0")} 元" + Environment.NewLine + $"應納稅額: 共 {((int)rtax).ToString("#,0")} 元" + Environment.NewLine+ Environment.NewLine;
+                    string str = "";                   
+                    str = calculate.TermResult2( sDate,  eDate,  i, tax);
+                    result_Text.Text += str;
+
 
                 }
-                result_Text.Text += $"全部應納稅額: 共 {((int)result).ToString("#,0")} 元";
+                result_Text.Text += $"全部應納稅額: 共 {((int)calculate.result).ToString("#,0")} 元";
 
             }
-                
+            pictureBox1.Visible = true;
+
+
         }
 //------------------------------------button----------------------------------------------------------------------------
         private void result_Text_TextChanged(object sender, EventArgs e)
