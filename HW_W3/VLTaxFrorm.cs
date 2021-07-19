@@ -31,6 +31,7 @@ namespace HW_W3
             this.Car_combo.SelectedIndex = 0;
             this.CC_Combo.DataSource = Common.autobike_Tax;
             this.CC_Combo.DisplayMember = "Cc";
+            this.CC_Combo.ValueMember = "Type";
             this.CC_Combo.SelectedIndex = 0;
             this.result_Text.Text = null;
             this.dateTimePicker1.Value = new DateTime(DateTime.Now.Year, 1, 1);
@@ -41,12 +42,11 @@ namespace HW_W3
 //-----------------------------------combo box-------------------------------------------------------------------------
         private void Car_combo_SelectedIndexChanged(object sender, EventArgs e) 
         {
-            if (this.Car_combo.SelectedIndex != -1)//依車種將汽缸CC數／馬達馬力放進Car_combo
+            if (this.Car_combo.SelectedIndex != -1)//依車種將汽缸CC數／馬達馬力放進CC_combo
             {
                
                 if (this.Car_combo.Text == "機車")
-                {          
-                    
+                {                              
                     this.CC_Combo.DataSource = Common.autobike_Tax;
                     this.CC_Combo.DisplayMember = "Cc";
                     this.CC_Combo.ValueMember = "Type";
@@ -111,10 +111,10 @@ namespace HW_W3
         {
             this.result_Text.Text = null;
             Calculate calculate = new Calculate();
-            int tax = calculate.IntTax(Car_combo.SelectedIndex, CC_Combo.SelectedIndex);
+            int tax = calculate.GetIntTax(Car_combo.SelectedIndex, CC_Combo.SelectedIndex);
             decimal result = 0;
-            string cctext = calculate.StrType(Car_combo.SelectedIndex, CC_Combo.SelectedIndex);
-            string typetext = calculate.StrCc(Car_combo.SelectedIndex, CC_Combo.SelectedIndex);
+            string cctext = calculate.GetStrType(Car_combo.SelectedIndex, CC_Combo.SelectedIndex);
+            string typetext = calculate.GetStrCc(Car_combo.SelectedIndex, CC_Combo.SelectedIndex);
             if (All_rbtn.Checked) //全年度
             {
                 result = tax;
@@ -138,14 +138,15 @@ namespace HW_W3
                 {
 
                     int days = calculate.Days(sDate, eDate, i); ;
-                    double days2 = 0;
+                    int days2 = 0;
                     if (DateTime.IsLeapYear(i))//閏年判斷
                         days2 = 366;
                     else
                         days2 = 365;
                     rtax = (decimal)calculate.TermResult(sDate, eDate, i,tax);
+                    DateTime minDate = calculate.GetDate(sDate, eDate, i, 1); DateTime maxDate = calculate.GetDate(sDate, eDate, i, 12);
                     result += rtax;
-                    result_Text.Text += "使用期間:"+ sDate.ToString("yyyy-MM-dd") + " ~ " + eDate.ToString("yyyy-MM-dd") + Environment.NewLine + $"計算天數: {days}天" + Environment.NewLine + "汽缸CC數: " + cctext + Environment.NewLine + "用途: " + typetext + Environment.NewLine + $"計算公式:{tax}*{days}/{days2} = {((int)rtax).ToString("#,0")} 元" + Environment.NewLine + $"應納稅額: 共 {((int)rtax).ToString("#,0")} 元" + Environment.NewLine+ Environment.NewLine;
+                    result_Text.Text += "使用期間:"+ minDate.ToString("yyyy-MM-dd") + " ~ " + maxDate.ToString("yyyy-MM-dd") + Environment.NewLine + $"計算天數: {days}天" + Environment.NewLine + "汽缸CC數: " + cctext + Environment.NewLine + "用途: " + typetext + Environment.NewLine + $"計算公式:{tax}*{days}/{days2} = {((int)rtax).ToString("#,0")} 元" + Environment.NewLine + $"應納稅額: 共 {((int)rtax).ToString("#,0")} 元" + Environment.NewLine+ Environment.NewLine;
 
                 }
                 result_Text.Text += $"全部應納稅額: 共 {((int)result).ToString("#,0")} 元";
@@ -154,5 +155,10 @@ namespace HW_W3
                 
         }
 //------------------------------------button----------------------------------------------------------------------------
+        private void result_Text_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }

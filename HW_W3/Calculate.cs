@@ -14,7 +14,7 @@ namespace HW_W3
         /// <param name="CarIndex"></param>
         /// <param name="CcIndex"></param>
         /// <returns></returns>
-        public int IntTax( int CarIndex, int CcIndex )
+        public int GetIntTax( int CarIndex, int CcIndex )
         {
 
             switch (CarIndex)
@@ -43,7 +43,7 @@ namespace HW_W3
         /// <param name="CarIndex"></param>
         /// <param name="CcIndex"></param>
         /// <returns></returns>
-        public string StrType(int CarIndex, int CcIndex)
+        public string GetStrType(int CarIndex, int CcIndex)
         {
 
             switch (CarIndex)
@@ -72,7 +72,7 @@ namespace HW_W3
         /// <param name="CarIndex"></param>
         /// <param name="CcIndex"></param>
         /// <returns></returns>
-        public string StrCc(int CarIndex, int CcIndex)
+        public string GetStrCc(int CarIndex, int CcIndex)
         {
 
             switch (CarIndex)
@@ -94,6 +94,37 @@ namespace HW_W3
 
             }
 
+        }
+        /// <summary>
+        /// 取得使用期間的日期
+        /// </summary>
+        /// <param name="sDate"></param>
+        /// <param name="eDate"></param>
+        /// <param name="i"></param>
+        /// <param name="j"></param>
+        /// <returns></returns>
+        public DateTime GetDate(DateTime sDate, DateTime eDate, int i,int j)
+        {
+            DateTime cDate = DateTime.Now;
+           // string date = "";
+
+            if( j == 1 )
+            {
+                if (sDate.Year == i)
+                    cDate = sDate;
+                else
+                    cDate = new DateTime(i, 1, 1);
+
+            }
+            else if(j == 12)
+            {
+                if (eDate.Year == i)
+                    cDate = eDate;
+                else
+                    cDate = new DateTime(i, 12, 31);
+            }
+
+            return cDate;
         }
         /// <summary>
         /// 稅額計算並回傳
