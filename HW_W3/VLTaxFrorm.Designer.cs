@@ -46,7 +46,7 @@ namespace HW_W3
             // 
             this.CC_Combo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CC_Combo.FormattingEnabled = true;
-            this.CC_Combo.Location = new System.Drawing.Point(226, 189);
+            this.CC_Combo.Location = new System.Drawing.Point(57, 184);
             this.CC_Combo.Name = "CC_Combo";
             this.CC_Combo.Size = new System.Drawing.Size(405, 23);
             this.CC_Combo.TabIndex = 0;
@@ -56,7 +56,7 @@ namespace HW_W3
             // 
             this.All_rbtn.AutoSize = true;
             this.All_rbtn.Checked = true;
-            this.All_rbtn.Location = new System.Drawing.Point(226, 61);
+            this.All_rbtn.Location = new System.Drawing.Point(57, 51);
             this.All_rbtn.Name = "All_rbtn";
             this.All_rbtn.Size = new System.Drawing.Size(73, 19);
             this.All_rbtn.TabIndex = 1;
@@ -68,7 +68,7 @@ namespace HW_W3
             // term_rbtn
             // 
             this.term_rbtn.AutoSize = true;
-            this.term_rbtn.Location = new System.Drawing.Point(371, 61);
+            this.term_rbtn.Location = new System.Drawing.Point(179, 51);
             this.term_rbtn.Name = "term_rbtn";
             this.term_rbtn.Size = new System.Drawing.Size(73, 19);
             this.term_rbtn.TabIndex = 2;
@@ -86,7 +86,7 @@ namespace HW_W3
             "大客車",
             "自用小客車",
             "營業用小客車"});
-            this.Car_combo.Location = new System.Drawing.Point(226, 116);
+            this.Car_combo.Location = new System.Drawing.Point(57, 128);
             this.Car_combo.Name = "Car_combo";
             this.Car_combo.Size = new System.Drawing.Size(405, 23);
             this.Car_combo.TabIndex = 3;
@@ -95,15 +95,15 @@ namespace HW_W3
             // result_Text
             // 
             this.result_Text.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.result_Text.Location = new System.Drawing.Point(226, 250);
+            this.result_Text.Location = new System.Drawing.Point(57, 242);
             this.result_Text.Multiline = true;
             this.result_Text.Name = "result_Text";
-            this.result_Text.Size = new System.Drawing.Size(405, 192);
+            this.result_Text.Size = new System.Drawing.Size(405, 395);
             this.result_Text.TabIndex = 4;
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(721, 61);
+            this.dateTimePicker1.Location = new System.Drawing.Point(513, 49);
             this.dateTimePicker1.MaxDate = new System.DateTime(2121, 12, 31, 0, 0, 0, 0);
             this.dateTimePicker1.MinDate = new System.DateTime(1921, 1, 1, 0, 0, 0, 0);
             this.dateTimePicker1.Name = "dateTimePicker1";
@@ -113,7 +113,7 @@ namespace HW_W3
             // 
             // dateTimePicker2
             // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(986, 61);
+            this.dateTimePicker2.Location = new System.Drawing.Point(513, 90);
             this.dateTimePicker2.MaxDate = new System.DateTime(2121, 12, 31, 0, 0, 0, 0);
             this.dateTimePicker2.MinDate = new System.DateTime(1921, 1, 1, 0, 0, 0, 0);
             this.dateTimePicker2.Name = "dateTimePicker2";
@@ -125,7 +125,7 @@ namespace HW_W3
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("PMingLiU", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label1.Location = new System.Drawing.Point(686, 64);
+            this.label1.Location = new System.Drawing.Point(478, 49);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(29, 20);
             this.label1.TabIndex = 7;
@@ -136,7 +136,7 @@ namespace HW_W3
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("PMingLiU", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label2.Location = new System.Drawing.Point(939, 64);
+            this.label2.Location = new System.Drawing.Point(478, 90);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(29, 20);
             this.label2.TabIndex = 8;
@@ -145,7 +145,7 @@ namespace HW_W3
             // 
             // Calculate_btn
             // 
-            this.Calculate_btn.Location = new System.Drawing.Point(398, 484);
+            this.Calculate_btn.Location = new System.Drawing.Point(486, 242);
             this.Calculate_btn.Name = "Calculate_btn";
             this.Calculate_btn.Size = new System.Drawing.Size(118, 47);
             this.Calculate_btn.TabIndex = 9;
@@ -155,7 +155,7 @@ namespace HW_W3
             // 
             // Reset_btn
             // 
-            this.Reset_btn.Location = new System.Drawing.Point(522, 484);
+            this.Reset_btn.Location = new System.Drawing.Point(626, 242);
             this.Reset_btn.Name = "Reset_btn";
             this.Reset_btn.Size = new System.Drawing.Size(109, 47);
             this.Reset_btn.TabIndex = 10;
@@ -168,7 +168,7 @@ namespace HW_W3
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(1304, 716);
+            this.ClientSize = new System.Drawing.Size(820, 716);
             this.Controls.Add(this.Reset_btn);
             this.Controls.Add(this.Calculate_btn);
             this.Controls.Add(this.label2);
